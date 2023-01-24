@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 const usersRoute = require('./routes/usersRoute');
 const error = require('./middlewares/errorMiddlewareHandler');
+const bookRouter = require('./routes/bookRoutes');
 const app = express();
 
 
@@ -19,7 +20,7 @@ app.use(error.errorMiddlewareHandler);
 //Users routes
 app.use('/api/auth', usersRoute);
 //Books routes
-
+app.use('/api/books', bookRouter);
 
 //Server
 const PORT = process.env.PORT || 5000;
