@@ -1,0 +1,14 @@
+{
+  "name": "mern_app_library",
+  "version": "1.0.0",
+  "description": "MERN APP Library",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elias AJEDDIG",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
