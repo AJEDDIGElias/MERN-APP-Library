@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const databaseCo = () => {
     //Connect DB
 mongoose
-.connect('mongodb+srv://Elias:Potatokiller@cluster0.cbdpgrg.mongodb.net/?retryWrites=true&w=majority', {
+.connect('mongodb+srv://Elias:Potatokiller@cluster0.cbdpgrg.mongodb.net/Library', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })

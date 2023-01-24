@@ -1,24 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const User = require('./models/User');
+const usersRoute = require('./routes/usersRoutes');
 const app = express();
 
 
 //DB Connect 
 require('./config/databaseCo')();
 
+//BODY DATA
+app.use(express.json());
+
 //Routes
 //Users routes
-app.post('/api/auth/signup', (req,res)=>{
-    res.send('Register route');
-});
 
-app.post('/api/auth/login', (req,res)=>{
-    res.send('Login route');
-});
+app.use('/api/auth', usersRoute);
 
-app.get('/api/users', (req,res)=>{
-    res.send('Fetch users');
-});
+
+
+
 
 //Server
 const PORT = process.env.PORT || 5000;
