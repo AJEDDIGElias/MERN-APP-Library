@@ -1,15 +1,10 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const app = express();
 
-//Connect DB
-mongoose.connect('mongodb+srv://Elias:Potatokiller@cluster0.cbdpgrg.mongodb.net/?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log("Connexion à la database réussie ✅"))
-.catch((err) => console.log("🚧ERROR - Database Connexion 🚧", err));
 
+//DB Connect 
+require('./config/databaseCo')();
 
 //Routes
 //Users routes
