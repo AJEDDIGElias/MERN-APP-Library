@@ -9,33 +9,30 @@ import {
   FETCH_USERS_REQUEST,
 } from '../actionTypes';
 
-//State of the book
-
 const createBookAction = bookData => {
-    return async dispatch => {
-      try {
-        dispatch({
-          type: CREATE_BOOK_REQUEST,
-        });
-  
-        const config = {
-          'Content-Type': 'application/json',
-        };
-        const { data } = await axios.post('/api/books', bookData, config);
-  
-        dispatch({
-          type: CREATE_BOOK_SUCCESS,
-          payload: data,
-        });
-      } catch (error) {
-        dispatch({
-          type: CREATE_BOOK_FAIL,
-          payload: error.response && error.response.data.message,
-        });
-      }
-    };
-  };
+  return async dispatch => {
+    try {
+      dispatch({
+        type: CREATE_BOOK_REQUEST,
+      });
 
+      const config = {
+        'Content-Type': 'application/json',
+      };
+      const { data } = await axios.post('/api/books', bookData, config);
+
+      dispatch({
+        type: CREATE_BOOK_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: CREATE_BOOK_FAIL,
+        payload: error.response && error.response.data.message,
+      });
+    }
+  };
+};
 
 //Fetch all books action
 

@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/User');
 const asyncHandler = require('express-async-handler');
 const usersRoute = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware');
 const generateToken = require('../utils/generateToken');
 
 //Register
@@ -54,5 +55,22 @@ usersRoute.delete('/:id', (req,res)=>{
 usersRoute.get('/', (req,res)=>{
     res.send('Fetch users');
 });
+
+//Profile route
+usersRoute.get('/profile/:id', 
+//authMiddleware, 
+asyncHandler(async (req,res) => {
+    const user = await User.findById(req.params.id);
+
+    if (user) {
+      res.status(200);
+      res.json(user);
+    } else {
+      res.status(500);
+      throw new Error('There are no profile for this account');
+    }
+  })
+);
+   
 
 module.exports=usersRoute;
